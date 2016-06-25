@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="ContactApp">
+    <head>
+        <title>Contact List App</title>
+        <script src="libs/angular.js"></script>
+        <script src="src/script.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    </head>
+    <body >
+        <div class="container" ng-controller="ContactController">
+            <h1>Contact List Application !!</h1>
+            {{updateContact}}<br/>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" ng-model="contact.name" class="form-control"/></td>
+                        <td><input type="text" ng-model="contact.email" class="form-control"/></td>
+                        <td><input type="text" ng-model="contact.phone" class="form-control"/></td>
+                        <td>
+                            <input type="button" ng-click="addContact()"  ng-hide="showUpdateContact" class="btn - btn-primary" value="Add"/>
+                            <input type="button" ng-click="updateContact()" ng-show="showUpdateContact" class="btn - btn-info" value="Update"/>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="contact in contactList">
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.email}}</td>
+                        <td>{{contact.phone}}</td>
+                        <td>
+                            <input type="button" ng-click="deleteContact(contact._id)" class="btn - btn-danger" value="Delete"/>
+                            <input type="button" ng-click="editContact(contact._id)" class="btn - btn-success" value="Edit"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
